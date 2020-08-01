@@ -1,53 +1,77 @@
-
 /**
- * Write a description of class Fecha here.
+ * Representa coordenadas en el espacio bidimensional, 
+ * sus metodos retornan sus coordenadas, la distancia al origen,
+ * el angulo con respecto al eje polar quees paralelo al eje x
+ * y permite conocer la distancia entre dos puntos diferentes.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Samuel David Ben Jacob Arango Henao   
+ * @version 2
  */
-public class Fecha
-{
+public class Punto2D{
 
-    private int dia, mes, año;
-
-    public Fecha(int dia, int mes, int año){
-        this.dia = dia;
-        this.mes = mes;
-        this.año = año;
+    /**
+     * Se definen las coordenadas para el punto en 2 dimensiones.
+     */
+    private double x, y;
+    
+    /**
+     * Se crea el constructor del dato Punto2D.
+     */
+    public Punto2D (double x, double y){
+        
+        this.x = x;
+        
+        this.y = y;
+    
+    }
+    
+    /**
+     * Retorna la coordenada sobre el eje X
+     */
+    public double x(){
+        
+        return x;
+    
+    }
+    
+    /**
+     * Retorna la coordenada sobre el eje Y
+     */
+    public double y(){
+    
+        return y;
+    
+    }
+    
+    /**
+     * Retorna la distancia que hay entre el 
+     * origen del sistema coordenado y el punto
+     * (O bien la coordenada radial en un sistema de coordenadas polares)
+     */
+    public double radio(){
+        
+        return Math.sqrt(Math.pow(x,2) + Math.pow(y,2));
         
     }
-
-    public int dia(){
-        return dia;
-    }
     
-    public int mes(){
-        return mes;
-    }
-    
-    public int año(){
-        return año;
-    }
-    
-    public String fecha(){
-        String fecha = "";
-        fecha = fecha + dia + "/" + mes + "/" + año;
-        return fecha;
-    }
-    
-    public String compararFechas(Fecha otra){
-        String comparacion = "";
+    /**
+     * Retorna el angulo que se forma entre el eje x
+     * y un segmento de linea delorigen al punto
+     * (O bien, la coordenada angular en un sistema de coordenadas polares)
+     */
+    public double angle(){
+      
+        return Math.atan2(y, x);
         
-        if (otra.año() > año){comparacion = otra.fecha() + " es después de " + fecha();}
-        else {if (otra.año() < año){comparacion = otra.fecha() + " es ántes de " + fecha();}
-            else {if (otra.mes() > mes){comparacion = otra.fecha() + " es después de " + fecha();}
-                else {if (otra.mes() < mes){comparacion = otra.fecha() + " es ántes de " + fecha();}
-                    else {if (otra.dia() > dia()){comparacion = otra.fecha() + " es después de " + fecha();}
-                        else {if (otra.dia() < dia()){comparacion = otra.fecha() + " es ántes de " + fecha();}
-                            else{comparacion = otra.fecha() + " es el mismo día que " + fecha();}}}}}}
-                 
-        return comparacion;
     }
     
+    /**
+     * Retorna la distancia entre dos puntos diferentes.
+     */
+    public double distancia(Punto2D otro){
+        
+        return Math.sqrt(Math.pow(x - otro.x,2) + Math.pow(y - otro.y,2));
+        
+    }
     
 }
