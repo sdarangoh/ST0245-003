@@ -1,77 +1,76 @@
 /**
- * Representa coordenadas en el espacio bidimensional, 
- * sus metodos retornan sus coordenadas, la distancia al origen,
- * el angulo con respecto al eje polar quees paralelo al eje x
- * y permite conocer la distancia entre dos puntos diferentes.
+ * Est clase tiene por objetivo representar una fecha con formato DD/MM/AAAA, 
+ * permitir acceder al año, mes u hora en especifico
+ * y poder compararla con otra.
  * 
- * @author Samuel David Ben Jacob Arango Henao   
+ * @author Samuel David Ben Jacob Arango Henao
  * @version 2
  */
-public class Punto2D{
+public class Fecha
+{
+    /** 
+     * Se definen las variables que representaran
+     * los componentes de la fecha.
+     */
+    private byte dia, mes;
+    private short año;
 
     /**
-     * Se definen las coordenadas para el punto en 2 dimensiones.
+     * representa el constructor de el dato Fecha.
      */
-    private double x, y;
-    
+    public Fecha(byte dia, byte mes, short año){
+        this.dia = dia;
+        this.mes = mes;
+        this.año = año;
+        
+    }
+
     /**
-     * Se crea el constructor del dato Punto2D.
+     * Este metodo retorna el dia de la fecha.
      */
-    public Punto2D (double x, double y){
-        
-        this.x = x;
-        
-        this.y = y;
-    
+    public byte dia(){
+        return dia;
     }
     
     /**
-     * Retorna la coordenada sobre el eje X
+     * Este metodo retorna el mes de la fecha.
      */
-    public double x(){
-        
-        return x;
-    
+    public byte mes(){
+        return mes;
     }
     
     /**
-     * Retorna la coordenada sobre el eje Y
+     * Este metodo retorna el año de la fecha.
      */
-    public double y(){
-    
-        return y;
-    
+    public short año(){
+        return año;
     }
     
     /**
-     * Retorna la distancia que hay entre el 
-     * origen del sistema coordenado y el punto
-     * (O bien la coordenada radial en un sistema de coordenadas polares)
+     * Este metodo retorna la fecha como una cadena,
+     * sus componentes iran separadas por un /.
      */
-    public double radio(){
-        
-        return Math.sqrt(Math.pow(x,2) + Math.pow(y,2));
-        
+    public String fecha(){
+        String fecha = "";
+        fecha = fecha + dia + "/" + mes + "/" + año;
+        return fecha;
     }
     
     /**
-     * Retorna el angulo que se forma entre el eje x
-     * y un segmento de linea delorigen al punto
-     * (O bien, la coordenada angular en un sistema de coordenadas polares)
+     * Este método permite comparar dos fechas distinas,
+     * retorna un valor -1, si la fecha con la que se compara es ántes,
+     * 0 si son iguales y 1 si la fecha con la que se compara es después.
      */
-    public double angle(){
-      
-        return Math.atan2(y, x);
+    public byte compararFechas(Fecha otra){
+        byte comparacion = 0;
         
+        if (otra.año*10000 + otra.mes*100 + otra.dia > año*10000 + mes*100 + dia){comparacion = 1;}
+        else 
+        if (otra.año*10000 + otra.mes*100 + otra.dia < año*10000 + mes*100 + dia){comparacion = -1;}
+
+                 
+        return comparacion;
     }
     
-    /**
-     * Retorna la distancia entre dos puntos diferentes.
-     */
-    public double distancia(Punto2D otro){
-        
-        return Math.sqrt(Math.pow(x - otro.x,2) + Math.pow(y - otro.y,2));
-        
-    }
     
 }
