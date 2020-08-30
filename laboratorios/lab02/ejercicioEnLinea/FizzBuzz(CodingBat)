@@ -1,0 +1,18 @@
+public String[] fizzBuzz(int start, int end) {
+  String[] FB = new String[end - start];
+  for(int i = 0; i < FB.length; i++){
+    if((start + i) % 3 == 0 && (start + i) % 5 == 0){
+      FB[i] = "FizzBuzz";
+    }
+    else if((start + i) % 3 == 0){
+      FB[i] = "Fizz";
+    }
+    else if((start + i) % 5 == 0){
+      FB[i] = "Buzz";
+    }
+    else{
+      FB[i] = String.valueOf((start + i));
+    } 
+  }
+  return FB;
+}
