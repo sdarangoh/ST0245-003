@@ -1,0 +1,12 @@
+public boolean twoTwo(int[] nums) {
+  boolean twoTwo = true;
+  for(int i = 0; i < nums.length; i++){
+    if(nums[i] == 2){
+      if (i != 0 && nums[i - 1] == 2){
+        twoTwo = true;
+      }
+      else{twoTwo = false;}
+    }
+  }
+  return twoTwo;
+}
