@@ -1,9 +1,0 @@
-public boolean more14(int[] nums) {
-  int uno = 0, cuatro = 0;
-  for(int i = 0; i < nums.length; i++){
-    if(nums[i] == 1) uno = uno + 1;
-    if(nums[i] == 4) cuatro = cuatro + 1;
-  }
-  if(uno > cuatro) return true;
-  else return false;
-}
